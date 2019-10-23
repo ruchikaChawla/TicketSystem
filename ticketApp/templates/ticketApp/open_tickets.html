@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Open Tickets</title>
+</head>
+<body>
+<h1>Open Tickets</h1>
+<table border="1">
+<tr>
+ {% for cols in col_names %}
+       <th><b>{{ cols }}</b>&nbsp;&nbsp;</th>
+{% endfor %}
+</tr>
+ {% for rows in raw_data %}
+     <tr>
+    {% if "open" in rows %}
+        {% for values in rows %}
+           {% if values == rows.0 %}
+                <td><a href="edit/{{ values }}/"><b>{{ values }}</b>&nbsp;&nbsp;</a></td>
+            {% else %}
+                <td><b>{{ values }}</b>&nbsp;&nbsp;</td>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+     </tr>
+{% endfor %}
+</table>
+</body>
+</html>
