@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Ticktes</title>
+    <title>Edit Tickets</title>
 </head>
 <body>
 <h1>View/Edit Tickets</h1>
@@ -13,9 +13,20 @@
     {% csrf_token %}
     {{ form.as_p }}
     <br>
-    <button type="comments" class="save btn btn-default">Comments</button>
+    <button type="submit" class="save btn btn-default">Submit Comment</button>
 </form>
+
+     {% for comment in all_comments %}
+        <p>
+            {{ comment.description }}
+        </p>
+
+     {% endfor %}
+
 <br>
-<a href="#"><button type="button" class="btn btn-default"><span aria-hidden="true"></span> Resolve</button></a>
+<form action="close_this_ticket" method="POST">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-default" value="Resolve this ticket"></input>
+</form>
 </body>
 </html>
