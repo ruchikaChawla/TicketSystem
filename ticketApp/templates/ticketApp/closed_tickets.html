@@ -6,5 +6,21 @@
 </head>
 <body>
 <h1>Closed Tickets</h1>
+<table border="1">
+<tr>
+ {% for cols in col_names %}
+       <th><b>{{ cols }}</b>&nbsp;&nbsp;</th>
+{% endfor %}
+</tr>
+ {% for rows in raw_data %}
+     <tr>
+    {% if "closed" in rows %}
+        {% for values in rows %}
+        <td><b>{{ values }}</b>&nbsp;&nbsp;</td>
+        {% endfor %}
+    {% endif %}
+     </tr>
+{% endfor %}
+</table>
 </body>
 </html>

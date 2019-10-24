@@ -18,10 +18,12 @@ def open_tickets(request):
 
 
 def closed_tickets(request):
-    return render(request, 'ticketApp/closed_tickets.html')
+    raw_data = Ticket.objects.values_list()
+    col_names = Ticket.objects.values().__getitem__(0).keys()
+    return render(request, 'ticketApp/closed_tickets.html', {'raw_data': raw_data, 'col_names': col_names})
 
 
-def edit_tickets(request,ticket_id):
+def edit_tickets(request, ticket_id):
     tickets = TicketTable(Ticket.objects.filter(id=ticket_id))
     return render(request, 'ticketApp/edit_tickets.html', {'ticket_id': tickets})
 
