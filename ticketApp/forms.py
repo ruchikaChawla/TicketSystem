@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Ticket
+from .models import Ticket, Comments
 
 
 class TicketForm(ModelForm):
@@ -11,4 +11,11 @@ class TicketForm(ModelForm):
                   'email',
                   'issue_type',
                   'status',
+                  'description']
+
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comments
+        fields = ['ticket_id',
                   'description']

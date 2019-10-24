@@ -23,4 +23,12 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(default='', max_length=255))
             ],
         ),
+        migrations.CreateModel(
+            name='Comments',
+            fields=[
+                ('id', models.AutoField(primary_key=True)),
+                ('ticket_id', models.ForeignKey('Ticket', on_delete=models.CASCADE)),
+                ('description', models.TextField(default=''))
+            ],
+        ),
     ]

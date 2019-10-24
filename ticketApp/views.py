@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from ticketApp.forms import TicketForm
+from ticketApp.forms import TicketForm, CommentForm
 from ticketApp.models import Ticket
 from ticketApp.table import TicketTable
 
@@ -24,8 +24,15 @@ def closed_tickets(request):
 
 
 def edit_tickets(request, ticket_id):
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES or None)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('#')
+    else:
+        form = CommentForm()
     tickets = TicketTable(Ticket.objects.filter(id=ticket_id))
-    return render(request, 'ticketApp/edit_tickets.html', {'ticket_id': tickets})
+    return render(request, 'ticketApp/edit_tickets.html', {'ticket_id': tickets, 'form': form})
 
 
 def create(request):

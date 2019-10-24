@@ -1,4 +1,4 @@
-"""CallHubTicketSystem URL Configuration
+"""CallHubTest URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -13,9 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from ticketApp import views
 from django.contrib import admin
 from django.urls import path
+
+from ticketApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +25,4 @@ urlpatterns = [
     path('ticket/open/', views.open_tickets, name='open'),
     path('ticket/closed/', views.closed_tickets, name='closed'),
     path('ticket/open/edit/<int:ticket_id>/', views.edit_tickets, name='edit'),
-
 ]
