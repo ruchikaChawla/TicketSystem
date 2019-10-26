@@ -4,12 +4,25 @@
   <head>
     <title>CallHubTicketSystem</title>
   <body>
+     {% if user.is_authenticated %}
+    <strong> Welcome {{ user }}! </strong>
+         <a href="{% url 'logout' %}">
+          Logout </a>&nbsp
+     {% else %}
+           <a href="{% url 'register' %}">
+          Register </a>&nbsp
+           <a href="{% url 'login' %}">
+          Login </a>&nbsp
+     {% endif %}
+
       <a href="{% url 'create' %}">
           Create </a>&nbsp
       <a href="{% url 'open' %}">
           Open Tickets</a>&nbsp
       <a href="{% url 'closed' %}">&nbsp
           Closed Tickets</a>
+
+
   </body>
 {% block content %}{% endblock %}
 </html>

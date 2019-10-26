@@ -17,5 +17,4 @@ class TicketForm(ModelForm):
 class CommentForm(ModelForm):
     class Meta:
         model = Comments
-        fields = ['ticket_id',
-                  'description',]
+        fields = ['description']
