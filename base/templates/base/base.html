@@ -4,11 +4,12 @@
   <head>
     <title>CallHubTicketSystem</title>
   <body>
-      <a href="create">
-          Create </a><br><br>
-      <a href="open">
-          Open Tickets </a><br><br>
-      <a href="closed">
-          Closed Tickets </a><br><br>
+      <a href="{% url 'create' %}">
+          Create </a>&nbsp
+      <a href="{% url 'open' %}">
+          Open Tickets</a>&nbsp
+      <a href="{% url 'closed' %}">&nbsp
+          Closed Tickets</a>
   </body>
+{% block content %}{% endblock %}
 </html>

@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -31,16 +33,16 @@ def edit_tickets(request, ticket_id):
             return HttpResponseRedirect('#')
     else:
         form = CommentForm()
-    tickets = TicketTable(Ticket.objects.filter(id=ticket_id))
+    tickets = Ticket.objects.filter(id=ticket_id)
     all_comments = Comments.objects.filter(ticket_id=ticket_id)
-    return render(request, 'ticketApp/edit_tickets.html', {'ticket_id': tickets, 'form': form, 'all_comments': all_comments})
+    return render(request, 'ticketApp/edit_tickets.html', {'tickets': tickets, 'form': form, 'all_comments': all_comments})
 
 
 def close_the_ticket(request, ticket_id):
-    print(ticket_id)
     ticket = Ticket.objects.get(id=ticket_id)
-    ticket.status = "closed"
-    ticket.save()
+    ticket.status = "Closed"
+    ticket.closed_date = date.today()
+    ticket.save(update_fields=["closed_date", "status"])
     raw_data = Ticket.objects.values_list()
     col_names = Ticket.objects.values().__getitem__(0).keys()
     return render(request, 'ticketApp/closed_tickets.html', {'raw_data': raw_data, 'col_names': col_names})

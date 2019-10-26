@@ -11,11 +11,11 @@ class TicketForm(ModelForm):
                   'email',
                   'issue_type',
                   'status',
-                  'description']
+                  'description',]
 
 
 class CommentForm(ModelForm):
     class Meta:
         model = Comments
         fields = ['ticket_id',
-                  'description']
+                  'description',]

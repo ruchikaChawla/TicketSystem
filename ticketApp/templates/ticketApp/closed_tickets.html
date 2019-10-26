@@ -1,3 +1,5 @@
+{% extends 'base/base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
 </tr>
  {% for rows in raw_data %}
      <tr>
-    {% if "closed" in rows %}
+    {% if "Closed" in rows %}
         {% for values in rows %}
         <td><b>{{ values }}</b>&nbsp;&nbsp;</td>
         {% endfor %}
@@ -24,3 +26,4 @@
 </table>
 </body>
 </html>
+{% endblock %}

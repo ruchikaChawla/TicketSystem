@@ -1,3 +1,5 @@
+{% extends 'base/base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
 </tr>
  {% for rows in raw_data %}
      <tr>
-    {% if "open" in rows %}
+     {% if "Open" in rows %}
         {% for values in rows %}
            {% if values == rows.0 %}
                 <td><a href="edit/{{ values }}/"><b>{{ values }}</b>&nbsp;&nbsp;</a></td>
@@ -22,9 +24,10 @@
                 <td><b>{{ values }}</b>&nbsp;&nbsp;</td>
             {% endif %}
         {% endfor %}
-    {% endif %}
+     {% endif %}
      </tr>
 {% endfor %}
 </table>
 </body>
 </html>
+{% endblock %}
